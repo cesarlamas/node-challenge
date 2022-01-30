@@ -7,7 +7,7 @@ const subscriptionSchema = mongoose.Schema({
         type : String,
         trim : true,
         lowercase : true,
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Invalid email address'],
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Invalid email address"],
         required: [true, "The email is required"]
     },
     first_name : {
@@ -29,5 +29,13 @@ const subscriptionSchema = mongoose.Schema({
         type : Boolean,
         required : [true, "Consent is required"]
     },
-    
-})
+    newsletter : {
+        type : Number, 
+        trim : true,
+        required : [true, "Newsletter id is required"]
+    }
+});
+
+const Subscription = mongoose.model("subscription",subscriptionSchema);
+
+module.exports = Subscription;
