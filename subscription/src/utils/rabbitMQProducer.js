@@ -21,5 +21,6 @@ function enqueue (subscription, res) {
         });
     });
 
-    module.exports = enqueue
 }
+
+module.exports = enqueue
