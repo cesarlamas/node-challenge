@@ -1,6 +1,7 @@
 const Subscription = require('../models/db');
 const subscription = require('../models/db');
 const errorHandler = require('../controllers/errorHandling');
+const enqueue = require('../utils/rabbitMQProducer');
 
 
 exports.get_all_subscriptions = async(req, res) => {
@@ -31,6 +32,7 @@ exports.create_subscription = (req,res) => {
 
     Subscription.create(req.body, (error, subscription) => {
         if (error) return errorHandler(error,res);
+        enqueue(subscription);
         res.send(subscription.id);
     });
     };
