@@ -19,7 +19,7 @@ const subscriptionSchema = mongoose.Schema({
         type : String,
         trim : true,
         lowercase : true,
-        enum : ["Female","male"]
+        enum : ["female","male"]
     },
     birth_date : {
         type : Date,

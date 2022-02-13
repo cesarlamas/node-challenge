@@ -1,8 +1,10 @@
 const router = require("express").Router();
-const {get_all_subscriptions, get_a_suscription} = require("../controllers/subscription_controller");
+const {get_all_subscriptions, get_a_subscription, create_subscription, cancel_subscription } = require("../controllers/subscription_controller");
 
-router.get("/subscriptions", get_all_subscriptions);
-router.get("/subscription/:id", get_a_suscription);
+router.get("/api/subscriptions", get_all_subscriptions);
+router.get("/api/subscription/:id", get_a_subscription);
+router.post("/api/subscriptions", create_subscription);
+router.delete("/api/subscription/:id", cancel_subscription);
 
 
 
