@@ -39,28 +39,8 @@ exports.create_subscription = (req,res) => {
 
 exports.cancel_subscription = async(req,res) => {
     const id = req.params.id
-    console.log(req)
     Subscription.findByIdAndDelete(id, (error, subscription) => {
         if(error || !subscription) return res.status(404).send('The subscription with the given ID was not found.');
         res.status(200).send({"message":"Subscription deleted"});
     })
 };
-
-
-// function errorHandler(error,res){
-//     try {
-//         switch (error.name) {
-//             case 'ValidationError':
-//                 res.status(400).json({
-//                     error: error.message
-//                 });
-//                 break;
-//             default:
-//                 res.status(500).json({
-//                     error: error.message
-//                 });
-//     } 
-//     }catch(error) {
-//         console.log(error);
-//     }
-// }

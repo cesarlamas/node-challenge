@@ -1,0 +1,100 @@
+swagger : "2.0"
+info : 
+  description : 
+  version : "1.0.0"
+  title : "Node coding Challenge - Subscriptions"
+  contact:
+    name : "César Lamas"
+    email : "cesarlamasdavila@gmail.com"
+  host : "localhost"
+  basePath : "/api"
+  tags:
+    - name: "subscriptions"
+      description: "Operations about subscriptions"
+  paths:
+    /subscriptions:
+      get:
+        tags:
+          - subscriptions
+        summary: "Get all subscriptions"
+        description: "Get all subscriptions"
+        operationId: "getSubscriptions"
+        produces:
+          - application/json
+        responses:
+          200:
+            description: "successful operation"
+    /subscription/{id}:
+      get:
+        tags:
+          - subscriptions
+        summary: "Get a subscription"
+        description: "Get a subscription"
+        operationId: "getSubscription"
+        produces:
+          - application/json
+        parameters:
+          - name: "id"
+            in: "path"
+            description: "Details of the subscription"
+        responses:
+          200:
+            description: "Return a subscription"
+          404:
+            description: "Subscription not found"
+      /subscription/{id}:      
+        delete:
+          tags:
+            - subscriptions
+          summary: "Delete a subscription"
+          description: "Delete a subscription"
+          operationId: "deleteSubscription"
+          produces:
+            - application/json
+          parameters:
+            - name: "id"
+              in: "path"
+              description: "Delete a suscription"
+          responses:
+            200:
+              description: "successful operation"
+            404:
+              description: "Subscription not found"
+      /subscriptions:
+        post:
+          tags:
+            - subscriptions
+          summary: "Create a subscription"
+          description: "Create a subscription"
+          operationId: "createSubscription"
+          produces:
+            - application/json
+          parameters:
+            - name: "subscription"
+              in: "body"
+              description: "Create a subscription"
+              schema:
+                type: "object"
+                required:
+                  - newsletter
+                  - email
+                  - birth_date
+                  - consent
+          responses:
+            200:
+              description: "Return id of the subscription"
+            400:
+              description: "Invalid format field"
+
+definitions:
+  type : "object"
+  properties:
+    id
+    newsletter
+    email
+    first_name
+    birth_date
+    consent
+    gender
+    
+    
